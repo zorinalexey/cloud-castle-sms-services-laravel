@@ -1,6 +1,6 @@
 {
     "name": "cloud-castle/sms-services-laravel",
-    "description": "Пакет для рассылки смс через сервисы smsc.ru и sms.ru",
+    "description": "Пакет Laravel 10 для рассылки смс и авторизационных телефонных вызовов через сервисы smsc.ru и sms.ru",
     "type": "library",
     "license": "MIT",
     "autoload": {
