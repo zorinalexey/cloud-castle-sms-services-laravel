@@ -1,0 +1,22 @@
+{
+    "name": "cloud-castle/sms-services-laravel",
+    "description": "Пакет для рассылки смс через сервисы smsc.ru и sms.ru",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "CloudCastle\\SmsServices\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Зорин Алексей",
+            "email": "alex-4-17@yandex.ru"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=8.0",
+        "laravel/framework": ">=v10.0.0"
+    }
+}
