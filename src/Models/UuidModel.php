@@ -2,12 +2,13 @@
 
 namespace CloudCastle\SmsServices\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Ramsey\Uuid\Uuid;
 
 abstract class UuidModel extends Model
 {
-    use GeneratePrimaryUuid;
+    use HasFactory;
 
     protected $keyType = 'string';
     public $incrementing = false;
