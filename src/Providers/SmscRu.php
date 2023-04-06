@@ -23,7 +23,7 @@ final class SmscRu extends AbstractProvider implements ProviderInterface
      */
     public static function phoneFormat(string $phone): string
     {
-        return '7'.preg_replace('~^(\+7|8)(\D)$~u', '', $phone);
+        return '7' . preg_replace('~^(\+7|8)?(\D)$~u', '', $phone);
     }
 
     /**

@@ -3,10 +3,10 @@
 namespace CloudCastle\SmsServices\Facades;
 use CloudCastle\SmsServices\SmsProvider;
 
-class SmsFacade
+class MobileService
 {
 
-    public static function sendSms(array|string $phones, string $message):array
+    public static function sendSms(array|string $phones, string $message): array
     {
         $results = [];
         $provider = (new SmsProvider())->getProvider();
