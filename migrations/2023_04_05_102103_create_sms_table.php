@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('sms', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->unique();
             $table->string('provider_class', 250);
             $table->string('provider_name');
             $table->integer('message_id')->nullable();

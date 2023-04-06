@@ -4,6 +4,7 @@ namespace CloudCastle\SmsServices\Models;
 
 use CloudCastle\SmsServices\Models\Traits\GeneratePrimaryUuid;
 use Illuminate\Database\Eloquent\Model;
+use Ramsey\Uuid\Uuid;
 
 abstract class UuidModel extends Model
 {
@@ -11,6 +12,13 @@ abstract class UuidModel extends Model
 
     protected $keyType = 'string';
     public $incrementing = false;
+
+    public function generatePrimaryUuid(): static
+    {
+        if (!$this->getKey())
+            $this->setAttribute($this->getKeyName(), (string)Uuid::uuid6());
+        return $this;
+    }
 
     protected static function boot()
     {
