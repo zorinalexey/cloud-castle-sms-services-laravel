@@ -2,7 +2,6 @@
 
 namespace CloudCastle\SmsServices\Providers;
 
-use CloudCastle\SmsServices\Response;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -120,34 +119,23 @@ final class SmscRu extends AbstractProvider implements ProviderInterface
         if($is_msg){
             if(!isset($response->error)){
                 foreach ($response->phones as $send_message){
-                    $result = new Response();
-                    $result->provider_class = self::class;
-                    $result->provider_name = self::APP_URL;
+                   $result = $this->getResultObj($response, 'message');
                     $result->balance = round($response->balance, 2);
                     $result->message_id = $response->id;
                     $result->message = $response->message;
                     $result->phone=$send_message->phone;
-                    $result->client_ip = $response->client_ip;
-                    $result->type = 'message';
                     $result->status = 'send';
                     $results[] = $result;
                 }
             }else{
-                $result = new Response();
-                $result->provider_class = self::class;
-                $result->provider_name = self::APP_URL;
-                $result->client_ip = $response->client_ip;
+                $result = $this->getResultObj($response, 'message');
                 $result->type = 'message';
                 $result->status = 'failed';
                 $result->message = $response->error;
                 $results[] = $result;
             }
         }else{
-            $result = new Response();
-            $result->provider_class = self::class;
-            $result->provider_name = self::APP_URL;
-            $result->type = 'call';
-            $result->client_ip = $response->client_ip;
+            $result = $this->getResultObj($response, 'call');
             if(isset($response->error)) {
                 $result->status = 'failed';
                 $result->message = $response->error;

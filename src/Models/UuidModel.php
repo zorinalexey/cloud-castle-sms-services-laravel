@@ -13,7 +13,7 @@ abstract class UuidModel extends Model
     protected $keyType = 'string';
     public $incrementing = false;
 
-    public function generatePrimaryUuid(): static
+    private function generatePrimaryUuid(): static
     {
         if (!$this->getKey())
             $this->setAttribute($this->getKeyName(), (string)Uuid::uuid6());

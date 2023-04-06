@@ -2,6 +2,8 @@
 
 namespace CloudCastle\SmsServices\Providers;
 
+use CloudCastle\SmsServices\Response;
+
 abstract class AbstractProvider
 {
 
@@ -56,5 +58,15 @@ abstract class AbstractProvider
         $this->token = $token;
         $this->test = $test;
         $this->from = $from;
+    }
+
+    final protected function getResultObj(mixed $response, string $type): Response
+    {
+        $result = new Response();
+        $result->provider_class = self::class;
+        $result->provider_name = self::APP_URL;
+        $result->client_ip = $response->client_ip;
+        $result->type = $type;
+        return $response;
     }
 }

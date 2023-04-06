@@ -2,6 +2,7 @@
 
 namespace CloudCastle\SmsServices\Facades;
 use CloudCastle\SmsServices\SmsProvider;
+
 class SmsFacade
 {
 
@@ -10,8 +11,8 @@ class SmsFacade
         $results = [];
         $provider = (new SmsProvider())->getProvider();
         $messages = $provider->sendSms($phones, $message);
-        foreach ($messages as $message){
-            $results[] = $message->save();
+        foreach ($messages as $msg) {
+            $results[] = $msg->save();
         }
         return $results;
     }
@@ -20,7 +21,7 @@ class SmsFacade
     {
         $results = [];
         $provider = (new SmsProvider())->getProvider();
-        $messages = $provider->call($phones, $message);
+        $messages = $provider->call($phone);
         foreach ($messages as $message){
             $results[] = $message->save();
         }

@@ -2,7 +2,6 @@
 
 namespace CloudCastle\SmsServices\Providers;
 
-use CloudCastle\SmsServices\Response;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -118,11 +117,7 @@ final class SmsRu extends AbstractProvider implements ProviderInterface
         if($is_msg) {
             if ($response && mb_strtoupper($response->status) === 'OK') {
                 foreach ($response->sms as $phone => $msg_data) {
-                    $result = new Response();
-                    $result->type = 'message';
-                    $result->provider_class = self::class;
-                    $result->provider_name = self::APP_URL;
-                    $result->client_ip = $response->client_ip;
+                    $result = $this->getResultObj($response, 'message');
                     $result->balance = $response->balance;
                     $result->phone = $phone;
                     if (mb_strtoupper($msg_data->status) === 'OK') {
@@ -136,12 +131,8 @@ final class SmsRu extends AbstractProvider implements ProviderInterface
                 }
             }
         }else{
-                $result = new Response();
-                $result->provider_class = self::class;
-                $result->provider_name = self::APP_URL;
-                $result->client_ip = $response->client_ip;
-                $result->type = 'call';
-                $result->phone = $response->phone;
+            $result = $this->getResultObj($response, 'call');
+            $result->phone = $response->phone;
                 if($response && mb_strtoupper($response->status) === 'OK'){
                     $result->status = 'send';
                     $result->balance = $response->balance;
