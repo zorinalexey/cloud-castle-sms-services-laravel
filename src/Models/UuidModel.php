@@ -2,7 +2,6 @@
 
 namespace CloudCastle\SmsServices\Models;
 
-use CloudCastle\SmsServices\Models\Traits\GeneratePrimaryUuid;
 use Illuminate\Database\Eloquent\Model;
 use Ramsey\Uuid\Uuid;
 
