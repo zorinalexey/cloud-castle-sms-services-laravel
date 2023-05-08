@@ -10,7 +10,7 @@
         "рассылка",
         "авторизация"
     ],
-    "version": "2.0",
+    "version": "2.1",
     "homepage": "https://github.com/zorinalexey/cloud-castle-sms-services-laravel",
     "autoload": {
         "psr-4": {
