@@ -13,7 +13,7 @@ final class SmsRu extends AbstractProvider implements ProviderInterface
     /**
      * Адрес сервера для отправки сообщения
      */
-    private const APP_URL = 'https://sms.ru';
+    protected const APP_URL = 'https://sms.ru';
 
     /**
      * Отправить сообщение на номер(а) $phones с текстом $message

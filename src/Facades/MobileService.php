@@ -3,9 +3,18 @@
 namespace CloudCastle\SmsServices\Facades;
 use CloudCastle\SmsServices\SmsProvider;
 
+/**
+ *
+ */
 class MobileService
 {
 
+    /**
+     * Отправить СМС
+     * @param array|string $phones
+     * @param string $message
+     * @return array
+     */
     public static function sendSms(array|string $phones, string $message): array
     {
         $results = [];
@@ -17,6 +26,11 @@ class MobileService
         return $results;
     }
 
+    /**
+     * Отправить авторизационный код звонком
+     * @param string $phone
+     * @return array
+     */
     public static function call(string $phone):array
     {
         $results = [];

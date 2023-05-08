@@ -14,7 +14,7 @@ final class SmscRu extends AbstractProvider implements ProviderInterface
     /**
      * Адрес сервера для отправки сообщения
      */
-    private const APP_URL = 'https://smsc.ru';
+    protected const APP_URL = 'https://smsc.ru';
 
     /**
      * Приведение номера телефона к требуемому формату
@@ -62,8 +62,9 @@ final class SmscRu extends AbstractProvider implements ProviderInterface
      * @param bool $is_msg
      * @return array
      */
-    private function setRequestParams(array|string $phones, string|null $message = null, bool $is_msg = true):array
+    private function setRequestParams(array|string $phones, string|null $message = null, bool|null $is_msg = null):array
     {
+        $is_msg ??= true;
         $data['login'] = $this->login;
         $data['psw'] = $this->password;
         $data['phones'] = $this->getPhones($phones);
@@ -111,10 +112,12 @@ final class SmscRu extends AbstractProvider implements ProviderInterface
     /**
      * @param mixed $response
      * @param array $data
+     * @param bool $is_msg
      * @return array
      */
-    private function result(mixed $response, array $data, bool $is_msg = true):array
+    private function result(mixed $response, array $data, bool|null $is_msg = null):array
     {
+        $is_msg ??= true;
         $results = [];
         if($is_msg){
             if(!isset($response->error)){
