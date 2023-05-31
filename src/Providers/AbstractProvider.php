@@ -75,6 +75,6 @@ abstract class AbstractProvider
         $result->provider_name = static::APP_URL;
         $result->client_ip = $response->client_ip;
         $result->type = $type;
-        return $response;
+        return $result;
     }
 }

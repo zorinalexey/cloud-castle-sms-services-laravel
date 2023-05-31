@@ -10,7 +10,6 @@
         "рассылка",
         "авторизация"
     ],
-    "version": "2.2",
     "homepage": "https://github.com/zorinalexey/cloud-castle-sms-services-laravel",
     "autoload": {
         "psr-4": {
@@ -32,5 +31,15 @@
     "require": {
         "php": ">=8.0",
         "ramsey/uuid": "^4.5"
+    },
+    "extra": {
+        "laravel": {
+            "models": [
+                "CloudCastle\\SmsServices\\Models\\Sms"
+            ],
+            "facades": [
+                "CloudCastle\\SmsServices\\Facades\\MobileSwrvice"
+            ]
+        }
     }
 }
